@@ -143,7 +143,7 @@ timeScale: { borderColor: '#2B2B43', timeVisible: true, secondsVisible: false, r
   useEffect(() => {
     if (!chartRef.current || !mainSeriesRef.current || candlesData.length === 0) return;
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+const ws = new WebSocket('wss://forex-api-dgo5.onrender.com/ws/prices');
 const wsUrl = apiUrl.replace(/^http/, 'ws') + '/ws/prices';
 const ws = new WebSocket(wsUrl);
 
