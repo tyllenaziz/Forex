@@ -47,15 +47,17 @@ export default function TradingChart({ symbol }: { symbol: string }) {
   }, [symbol, timeframe]);
 
   // Initialize Chart
-  useEffect(() => {
+    useEffect(() => {
     if (!chartContainerRef.current) return;
 
-    const chart = createChart(chartContainerRef.current, {
+    const container = chartContainerRef.current; // Create a local variable to avoid TS null checks
+    
+    const chart = createChart(container, {
       layout: { background: { type: ColorType.Solid, color: '#131722' }, textColor: '#d1d4dc', fontSize: 11 },
       grid: { vertLines: { color: '#1e222d' }, horzLines: { color: '#1e222d' } },
-      width: chartContainerRef.current.clientWidth,
-      height: chartContainerRef.current.clientHeight, 
-      timeScale: { borderColor: '#2B2B43', timeVisible: true, secondsVisible: false, rightOffset: 5, barSpacing: 6, minBarSpacing: 1, kineticScroll: { mouse: true, touch: true } },
+      width: container.clientWidth,
+      height: container.clientHeight || 600, // <-- Fallback to 600
+timeScale: { borderColor: '#2B2B43', timeVisible: true, secondsVisible: false, rightOffset: 5, barSpacing: 6, minBarSpacing: 1 },
       rightPriceScale: { borderColor: '#2B2B43', scaleMargins: { top: 0.1, bottom: 0.25 }, minimumWidth: 120, autoScale: true },
       crosshair: {
         mode: CrosshairMode.Normal,
@@ -141,7 +143,9 @@ export default function TradingChart({ symbol }: { symbol: string }) {
   useEffect(() => {
     if (!chartRef.current || !mainSeriesRef.current || candlesData.length === 0) return;
 
-    const ws = new WebSocket('ws://localhost:4000/ws/prices');
+const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+const wsUrl = apiUrl.replace(/^http/, 'ws') + '/ws/prices';
+const ws = new WebSocket(wsUrl);
 
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);

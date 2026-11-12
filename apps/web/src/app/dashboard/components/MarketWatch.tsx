@@ -31,8 +31,9 @@ export default function MarketWatch({ onSelect }: { onSelect: (symbol: string) =
     setMarkets(SYMBOLS.map(s => ({ ...s, bid: 0, change: '0.00' })));
 
     // 2. Connect to WebSocket
-    const ws = new WebSocket('ws://localhost:4000/ws/prices');
-
+const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+const wsUrl = apiUrl.replace(/^http/, 'ws') + '/ws/prices';
+const ws = new WebSocket(wsUrl);
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === 'PRICE_UPDATE') {
