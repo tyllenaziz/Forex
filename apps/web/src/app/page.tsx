@@ -14,9 +14,15 @@ export default function LandingPage() {
     }
   }, [isAdminMode, router]);
 
-  // Show a loading screen while redirecting
   if (isAdminMode) {
     return (
+      <div className="min-h-screen flex items-center justify-center bg-[#0b0e14] text-white">
+        <Shield size={48} className="text-[#f0b90b] mx-auto mb-4 animate-pulse" />
+      </div>
+    );
+  }
+
+  return (
       <div className="min-h-screen flex items-center justify-center bg-[#0b0e14] text-white">
         <div className="text-center">
           <Shield size={48} className="text-[#f0b90b] mx-auto mb-4 animate-pulse" />
