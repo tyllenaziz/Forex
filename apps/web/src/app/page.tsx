@@ -17,13 +17,6 @@ export default function LandingPage() {
   if (isAdminMode) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#0b0e14] text-white">
-        <Shield size={48} className="text-[#f0b90b] mx-auto mb-4 animate-pulse" />
-      </div>
-    );
-  }
-
-  return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0b0e14] text-white">
         <div className="text-center">
           <Shield size={48} className="text-[#f0b90b] mx-auto mb-4 animate-pulse" />
           <p className="text-gray-400">Redirecting to Admin Portal...</p>
@@ -34,7 +27,6 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-[#0b0e14] text-white font-sans">
-      
       {/* TOP NAVIGATION BAR */}
       <nav className="h-16 border-b border-gray-800 flex items-center justify-between px-8 bg-[#131722] sticky top-0 z-50">
         <div className="text-xl font-bold text-[#f0b90b]">FX<span className="text-white">Platform</span></div>
