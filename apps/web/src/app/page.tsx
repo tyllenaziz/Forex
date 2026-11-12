@@ -1,8 +1,31 @@
 'use client';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Shield, Zap, TrendingUp, Wallet, Binary, Activity, CheckCircle } from 'lucide-react';
 
 export default function LandingPage() {
+  const router = useRouter();
+  const isAdminMode = process.env.NEXT_PUBLIC_ADMIN_MODE === 'true';
+
+  useEffect(() => {
+    if (isAdminMode) {
+      router.replace('/admin');
+    }
+  }, [isAdminMode, router]);
+
+  // Show a loading screen while redirecting
+  if (isAdminMode) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#0b0e14] text-white">
+        <div className="text-center">
+          <Shield size={48} className="text-[#f0b90b] mx-auto mb-4 animate-pulse" />
+          <p className="text-gray-400">Redirecting to Admin Portal...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#0b0e14] text-white font-sans">
       
