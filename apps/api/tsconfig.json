@@ -8,12 +8,14 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "outDir": "dist",
-    "rootDir": "src",
     "baseUrl": ".",
+    "rootDir": "../..",
     "paths": {
       "@platform/shared-types": ["../../packages/shared-types/src/index.ts"],
       "@platform/money": ["../../packages/money/src/index.ts"]
-    }
+    },
+    "composite": true,
+    "incremental": true
   },
-  "include": ["src"]
+  "include": ["src", "../../packages/shared-types/src", "../../packages/money/src"]
 }
