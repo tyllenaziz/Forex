@@ -30,10 +30,9 @@ export default function MarketWatch({ onSelect }: { onSelect: (symbol: string) =
     // 1. Initialize with static data so it doesn't look empty
     setMarkets(SYMBOLS.map(s => ({ ...s, bid: 0, change: '0.00' })));
 
-    // 2. Connect to WebSocket
-const ws = new WebSocket('wss://forex-api-dgo5.onrender.com/ws/prices');
-const wsUrl = apiUrl.replace(/^http/, 'ws') + '/ws/prices';
-const ws = new WebSocket(wsUrl);
+    // 2. Connect to WebSocket (hardcoded production URL)
+    const ws = new WebSocket('wss://forex-api-dgo5.onrender.com/ws/prices');
+
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === 'PRICE_UPDATE') {
