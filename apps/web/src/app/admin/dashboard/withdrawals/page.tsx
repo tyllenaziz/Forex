@@ -12,7 +12,7 @@ export default function AdminWithdrawalsPage() {
     const token = localStorage.getItem('adminToken');
     if (!token) return router.push('/admin');
 
-    fetch('http://localhost:4000/api/admin/withdrawals', {
+    fetch('http://forex-api-dgo5.onrender.com/api/admin/withdrawals', {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => res.ok ? res.json() : Promise.reject())
@@ -34,7 +34,7 @@ export default function AdminWithdrawalsPage() {
     
     const token = localStorage.getItem('adminToken');
     try {
-      const res = await fetch(`http://localhost:4000/api/admin/${action}-withdrawal/${id}`, {
+      const res = await fetch(`http://forex-api-dgo5.onrender.com/api/admin/${action}-withdrawal/${id}`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` }
       });

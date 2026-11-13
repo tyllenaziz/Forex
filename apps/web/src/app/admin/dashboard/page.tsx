@@ -13,7 +13,7 @@ export default function AdminOverview() {
     if (!token) return router.push('/admin');
 
     // Fetch users
-    fetch('http://localhost:4000/api/admin/users', {
+    fetch('http://forex-api-dgo5.onrender.com/api/admin/users', {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => res.ok ? res.json() : Promise.reject())
@@ -21,7 +21,7 @@ export default function AdminOverview() {
       .catch(() => router.push('/admin'));
 
     // Fetch Stats
-    fetch('http://localhost:4000/api/admin/stats', {
+    fetch('http://forex-api-dgo5.onrender.com/api/admin/stats', {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => res.ok ? res.json() : Promise.reject())

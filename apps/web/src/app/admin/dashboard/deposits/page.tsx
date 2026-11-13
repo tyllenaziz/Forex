@@ -16,7 +16,7 @@ export default function AdminDepositsPage() {
     const token = localStorage.getItem('adminToken');
     if (!token) return router.push('/admin');
 
-    fetch('http://localhost:4000/api/admin/users', {
+    fetch('http://forex-api-dgo5.onrender.com/api/admin/users', {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => res.ok ? res.json() : Promise.reject())
@@ -35,7 +35,7 @@ export default function AdminDepositsPage() {
     if (!selectedUser) return alert('Please select a user');
 
     try {
-      const res = await fetch('http://localhost:4000/api/admin/deposit', {
+      const res = await fetch('http://forex-api-dgo5.onrender.com/api/admin/deposit', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

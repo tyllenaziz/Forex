@@ -48,5 +48,5 @@ export function startPriceStream(server: Server) {
     }
   }, 1000); // 1-second interval for smooth ticking
 
-  console.log('🌐 WebSocket Price Stream active at ws://localhost:4000/ws/prices');
+  console.log('🌐 WebSocket Price Stream active at ws://forex-api-dgo5.onrender.com/ws/prices');
 }
