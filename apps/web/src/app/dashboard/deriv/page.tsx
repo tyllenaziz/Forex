@@ -87,12 +87,13 @@ export default function DerivTerminal() {
         </div>
         
         {/* Chart - Full height on mobile */}
-        <div className="flex-1 min-h-[300px] overflow-hidden">
+                {/* Chart */}
+        <div className="flex-1 min-h-[200px] overflow-hidden">
           <TradingChart symbol={selectedSymbol} />
         </div>
         
-        {/* Digit Prediction Panel - Hidden on mobile (in drawer) */}
-        <div className="hidden md:block p-4 flex-shrink-0 bg-[#0b0e14] border-t border-gray-800">
+        {/* Digit Prediction Panel - Visible on BOTH mobile and desktop */}
+        <div className="flex-shrink-0 p-2 bg-[#0b0e14] border-t border-gray-800">
           <DigitPrediction onSelectDigit={(num) => { setTradeMode('DIGIT'); setTradeType('DIGIT_MATCH'); setSelectedDigit(num); }} />
         </div>
         
