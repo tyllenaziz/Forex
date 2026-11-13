@@ -247,9 +247,9 @@ const ws = new WebSocket('wss://forex-api-dgo5.onrender.com/ws/prices');
             SMA
           </button>
         </div>
-                <div className="flex gap-2 items-center">
-          {/* Timeframe buttons inside a visible box */}
-          <div className="flex items-center gap-0.5 bg-[#0b0e14] border border-gray-700 rounded p-0.5">
+                        <div className="flex items-center gap-2">
+          {/* Timeframe buttons in 2-column stack */}
+          <div className="grid grid-cols-2 gap-0.5 bg-[#0b0e14] border border-gray-700 rounded p-0.5">
             {['1m', '5m', '15m', '1H', '4H', '1D'].map(tf => (
               <button 
                 key={tf} 
