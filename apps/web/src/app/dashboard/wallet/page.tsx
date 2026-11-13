@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { apiFetch } from '@/lib/api';
 import { useAccount } from '@/context/AccountContext';
-import Sidebar from '../components/Sidebar';
 import { Wallet, CreditCard, Landmark, Download } from 'lucide-react';
 
 export default function WalletPage() {
@@ -144,12 +143,9 @@ export default function WalletPage() {
     }
   };
 
-  return (
-    <div className="flex w-full h-screen bg-[#0b0e14] overflow-hidden">
-      <Sidebar />
-      
-      <div className="flex-1 p-8 overflow-y-auto">
-        <div className="max-w-6xl mx-auto">
+    return (
+    <div className="flex-1 p-4 md:p-8 overflow-y-auto h-full">
+      <div className="max-w-6xl mx-auto">
           
           {/* Tabs */}
           <div className="flex bg-[#131722] rounded p-1 border border-gray-800 mb-8 w-full">
@@ -341,8 +337,7 @@ export default function WalletPage() {
             </div>
           )}
 
-        </div>
-      </div>
+           </div>
     </div>
   );
 }

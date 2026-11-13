@@ -5,7 +5,6 @@ import { apiFetch } from '@/lib/api';
 import { useAccount } from '@/context/AccountContext';
 import { Wallet, TrendingUp, CheckCircle, XCircle } from 'lucide-react';
 import Link from 'next/link';
-import Sidebar from '../components/Sidebar';
 
 export default function OverviewPage() {
   const router = useRouter();
@@ -38,12 +37,9 @@ export default function OverviewPage() {
 
   if (loading) return <div className="p-10 text-white">Loading...</div>;
 
-  return (
-    <div className="flex w-full h-screen bg-[#0b0e14] overflow-hidden">
-      <Sidebar />
-
-      <div className="flex-1 p-8 overflow-y-auto">
-        <div className="max-w-6xl mx-auto">
+    return (
+    <div className="flex-1 p-4 md:p-8 overflow-y-auto h-full">
+      <div className="max-w-6xl mx-auto">
           
           {/* Top Equity Card */}
           <div className="bg-[#131722] rounded-xl border border-gray-800 p-8 mb-6 relative overflow-hidden">
@@ -164,8 +160,7 @@ export default function OverviewPage() {
             </div>
           </div>
 
-        </div>
-      </div>
+           </div>
     </div>
   );
 }
