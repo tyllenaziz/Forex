@@ -30,8 +30,8 @@ export default function AdminOverview() {
   }, [router]);
 
   return (
-    <div className="p-8">
-      <div className="mb-8">
+    <div className="p-4 md:p-8">
+            <div className="mb-8">
         <div className="text-[10px] text-[#f0b90b] font-bold tracking-wider mb-1">ADMIN CONSOLE</div>
         <h1 className="text-3xl font-bold text-white">Operations Dashboard</h1>
       </div>

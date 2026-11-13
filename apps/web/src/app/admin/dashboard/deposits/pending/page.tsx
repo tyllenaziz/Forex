@@ -66,8 +66,8 @@ export default function PendingDepositsPage() {
   if (loading) return <div className="p-10 text-white">Loading...</div>;
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold text-white mb-2">Pending Deposits</h1>
+    <div className="p-4 md:p-8">
+            <h1 className="text-2xl font-bold text-white mb-2">Pending Deposits</h1>
       <p className="text-xs text-gray-500 mb-8">Review user deposit requests. Approved deposits are credited instantly. Rejected deposits are removed.</p>
       
       <div className="bg-[#131722] rounded-xl border border-gray-800 overflow-x-auto">
@@ -99,8 +99,8 @@ export default function PendingDepositsPage() {
                       {d.provider}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-xs text-gray-400">
-                    {Object.entries(d.details || {}).map(([key, val]: any) => {
+                  <td className="px-3 md:px-6 py-4 text-[10px] md:text-xs text-gray-400">
+                                        {Object.entries(d.details || {}).map(([key, val]: any) => {
                       if (!val) return null;
                       if (key === 'originalCurrency') return null;
                       

@@ -51,8 +51,8 @@ export default function AdminUsersPage() {
   if (loading) return <div className="p-10 text-white">Loading...</div>;
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold text-white mb-6">User Management</h1>
+    <div className="p-4 md:p-8">
+            <h1 className="text-2xl font-bold text-white mb-6">User Management</h1>
       
       <div className="bg-[#131722] rounded-xl border border-gray-800 overflow-x-auto">
         <table className="w-full text-left text-sm text-gray-300">

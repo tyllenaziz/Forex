@@ -56,16 +56,16 @@ export default function AdminDepositsPage() {
   if (loading) return <div className="p-10 text-white">Loading...</div>;
 
   return (
-    <div className="p-8 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold text-white mb-2">Deposit Management</h1>
+    <div className="p-4 md:p-8 max-w-4xl mx-auto">
+            <h1 className="text-2xl font-bold text-white mb-2">Deposit Management</h1>
       <p className="text-xs text-gray-500 mb-8">Manually credit a user's REAL account. This will be logged in the double-entry ledger.</p>
       
       <div className="bg-[#131722] p-6 rounded-xl border border-gray-800 mb-8">
         <h2 className="text-sm font-bold text-gray-300 mb-4 flex items-center gap-2">
           <CheckCircle size={16} className="text-[#26a69a]"/> Manual Real Deposit (Admin Override)
         </h2>
-        <form onSubmit={handleDeposit} className="flex gap-4 items-end">
-          <div className="flex-1">
+      <form onSubmit={handleDeposit} className="flex flex-col md:flex-row gap-3 md:gap-4 md:items-end">
+                  <div className="flex-1">
             <label className="text-xs text-gray-400 mb-1 block">Select User</label>
             
             {/* FIXED: The select tag is properly wrapped here */}

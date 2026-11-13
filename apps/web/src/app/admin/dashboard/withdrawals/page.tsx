@@ -51,8 +51,8 @@ export default function AdminWithdrawalsPage() {
   if (loading) return <div className="p-10 text-white">Loading...</div>;
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold text-white mb-2">Withdrawal Requests</h1>
+    <div className="p-4 md:p-8">
+            <h1 className="text-2xl font-bold text-white mb-2">Withdrawal Requests</h1>
       <p className="text-xs text-gray-500 mb-8">Review and approve pending client withdrawals.</p>
       
       <div className="bg-[#131722] rounded-xl border border-gray-800 overflow-x-auto">
