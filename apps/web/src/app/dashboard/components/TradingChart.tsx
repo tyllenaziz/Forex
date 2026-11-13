@@ -261,7 +261,7 @@ const ws = new WebSocket('wss://forex-api-dgo5.onrender.com/ws/prices');
 
       <div className="flex flex-1 relative">
                 {/* Drawing Toolbar - 2 columns on mobile, 1 column on desktop */}
-        <div className="w-10 md:w-12 bg-[#131722] border-r border-gray-800 flex flex-col items-center py-1 md:py-2 gap-1 md:gap-2 z-10 overflow-y-auto">
+               <div className="w-10 md:w-12 bg-[#131722] border-r border-gray-800 flex flex-col items-center py-1 md:py-2 gap-1 md:gap-2 z-10 overflow-y-auto">
            <div className="grid grid-cols-2 md:grid-cols-1 gap-1 md:gap-2">
              {[
               { id: 'cursor', icon: MousePointer2 },

@@ -68,13 +68,13 @@ export default function MarketWatch({ onSelect }: { onSelect: (symbol: string) =
 
   return (
     <div className="w-full md:w-56 border-r border-gray-800 bg-[#131722] flex flex-col h-full overflow-hidden">
-                        <div className="flex flex-wrap border-b border-gray-800">
+                             <div className="flex flex-col border-b border-gray-800">
         {CATEGORIES.map(cat => (
           <button
             key={cat}
             onClick={() => setActiveTab(cat)}
-            className={`flex-[0_0_20%] py-1.5 text-[9px] font-bold text-center ${
-              activeTab === cat ? 'text-blue-500 bg-[#1e222d]' : 'text-gray-500'
+            className={`w-full py-1.5 px-2 text-[10px] font-bold text-left border-b border-gray-800/30 ${
+              activeTab === cat ? 'text-blue-500 bg-[#1e222d]' : 'text-gray-500 hover:bg-[#1e222d]'
             }`}
           >
             {cat.toUpperCase()}

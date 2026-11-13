@@ -148,15 +148,18 @@ export default function Dashboard() {
         </div>
       </div>
 
-           {/* MOBILE DRAWER: Market Watch */}
+            {/* MOBILE DRAWER: Market Watch */}
       {isMarketWatchOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 md:hidden">
-<div className="absolute left-0 top-0 bottom-0 w-48 bg-[#131722]">
-              <div className="p-4 flex justify-between items-center border-b border-gray-800">
-              <span className="font-bold text-white">Market Watch</span>
-              <button onClick={() => setIsMarketWatchOpen(false)} className="text-gray-400"><X size={20} /></button>
+        <div className="fixed inset-0 z-50 bg-black/70 md:hidden" onClick={() => setIsMarketWatchOpen(false)}>
+          <div 
+            className="absolute left-0 top-0 bottom-0 w-40 bg-[#131722]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-3 flex justify-between items-center border-b border-gray-800">
+              <span className="font-bold text-sm text-white">Market</span>
+              <button onClick={() => setIsMarketWatchOpen(false)} className="text-gray-400"><X size={16} /></button>
             </div>
-            <div className="h-[calc(100%-60px)] overflow-y-auto">
+            <div className="h-[calc(100%-52px)] overflow-y-auto">
               <MarketWatch onSelect={(s) => { setSelectedSymbol(s); setIsMarketWatchOpen(false); }} />
             </div>
           </div>
