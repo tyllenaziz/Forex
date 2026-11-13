@@ -185,10 +185,10 @@ adminRouter.get('/pending-deposits', authRequired, adminOnly, async (req, res) =
     );
     res.json({ deposits: result.rows });
   } catch (err: any) {
+    console.error('Pending deposits error:', err);
     res.status(500).json({ error: err.message });
   }
 });
-
 // 6. Approve a Pending Deposit
 adminRouter.post('/approve-deposit/:id', authRequired, adminOnly, async (req, res) => {
   const { id } = req.params;
