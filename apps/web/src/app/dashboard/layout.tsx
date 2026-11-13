@@ -104,9 +104,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="flex flex-1 overflow-hidden relative">
           
           {/* Desktop Sidebar (hidden on mobile) */}
-          <div className="hidden md:block h-screen">
-            <Sidebar />
-          </div>
+                          <div className="h-[calc(100%-64px)] overflow-y-auto">
+                  <Sidebar onClose={() => setIsSidebarOpen(false)} />
+                </div>
 
           {/* Mobile Sidebar Drawer */}
                     {isSidebarOpen && (
@@ -121,8 +121,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     <X size={20} />
                   </button>
                 </div>
-                <div className="h-[calc(100%-64px)] overflow-y-auto">
-                  <Sidebar />
+                                <div className="h-[calc(100%-64px)] overflow-y-auto">
+                  <Sidebar onClose={() => setIsSidebarOpen(false)} />
                 </div>
               </div>
             </div>
