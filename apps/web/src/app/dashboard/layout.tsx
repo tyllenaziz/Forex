@@ -39,14 +39,14 @@ function Header({ onOpenMenu }: { onOpenMenu: () => void }) {
   };
 
   return (
-    <header className="h-14 flex-shrink-0 border-b border-gray-800 flex items-center justify-between px-3 md:px-4 bg-[#131722]">
-      {/* Left: Hamburger (mobile) + Logo + Desktop Nav */}
+    <header className="h-12 flex-shrink-0 border-b border-gray-800 flex items-center justify-between px-3 md:px-4 bg-[#131722]">
+            {/* Left: Hamburger (mobile) + Logo + Desktop Nav */}
       <div className="flex items-center gap-2 md:gap-6">
         <button onClick={onOpenMenu} className="md:hidden text-gray-400 p-1">
           <Menu size={22} />
         </button>
         
-        <Link href="/dashboard/overview" className="text-lg md:text-xl font-bold text-[#f0b90b]">
+                <Link href="/dashboard/overview" className="text-base md:text-xl font-bold text-[#f0b90b]">
           FX<span className="text-white">Platform</span>
         </Link>
         
@@ -109,10 +109,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           </div>
 
           {/* Mobile Sidebar Drawer */}
-          {isSidebarOpen && (
+                    {isSidebarOpen && (
             <div className="fixed inset-0 z-50 bg-black/70 md:hidden" onClick={() => setIsSidebarOpen(false)}>
               <div 
-                className="absolute left-0 top-0 bottom-0 w-72 bg-[#131722]"
+                className="absolute left-0 top-0 bottom-0 w-56 bg-[#131722]"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="p-4 flex justify-between items-center border-b border-gray-800">
