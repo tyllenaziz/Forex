@@ -152,8 +152,8 @@ export default function Dashboard() {
            {/* MOBILE DRAWER: Market Watch */}
       {isMarketWatchOpen && (
         <div className="fixed inset-0 z-50 bg-black/70 md:hidden" onClick={() => setIsMarketWatchOpen(false)}>
-          <div 
-            className="absolute left-0 top-0 bottom-0 w-56 bg-[#131722]"
+                    <div 
+            className="absolute left-0 top-0 bottom-0 w-48 bg-[#131722]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-3 flex justify-between items-center border-b border-gray-800">
