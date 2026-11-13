@@ -25,8 +25,7 @@ export default function Sidebar() {
   ];
 
   return (
-    // Added shrink-0 to prevent the sidebar from collapsing
-    <div className="w-64 bg-[#131722] border-r border-gray-800 flex flex-col h-screen shrink-0">
+    <div className="w-full md:w-64 bg-[#131722] border-r border-gray-800 flex flex-col h-full shrink-0">
       <div className="p-4 border-b border-gray-800">
         <h2 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Menu</h2>
       </div>

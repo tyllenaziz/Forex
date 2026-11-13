@@ -67,8 +67,8 @@ export default function MarketWatch({ onSelect }: { onSelect: (symbol: string) =
   });
 
   return (
-    <div className="w-64 border-r border-gray-800 bg-[#131722] flex flex-col h-screen overflow-hidden">
-      <div className="flex border-b border-gray-800">
+    <div className="w-full md:w-64 border-r border-gray-800 bg-[#131722] flex flex-col h-full overflow-hidden">
+            <div className="flex border-b border-gray-800">
         {CATEGORIES.map(cat => (
           <button
             key={cat}
