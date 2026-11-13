@@ -46,7 +46,7 @@ export default function Sidebar({ onClose }: SidebarProps) {
       <div className="p-4 border-b border-gray-800 flex justify-between items-center">
         <h2 className="text-xs font-bold text-gray-500 uppercase tracking-wider">Menu</h2>
         {onClose && (
-          <button onClick={onClose} className="md:hidden text-gray-400">
+          <button onClick={onClose} className="md:hidden text-gray-400 p-1 hover:text-white">
             <X size={18} />
           </button>
         )}
@@ -70,7 +70,6 @@ export default function Sidebar({ onClose }: SidebarProps) {
         })}
       </nav>
       
-      {/* Logout Button */}
       <div className="border-t border-gray-800 p-2">
         <button
           onClick={handleLogout}
