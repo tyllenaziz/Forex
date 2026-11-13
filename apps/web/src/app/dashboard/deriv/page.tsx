@@ -150,13 +150,14 @@ export default function DerivTerminal() {
       )}
 
       {/* Mobile Drawer: Order Panel */}
+            {/* Mobile Drawer: Order Panel */}
       {isOrderPanelOpen && (
         <div 
           className="fixed inset-0 z-50 bg-black/70 md:hidden flex flex-col justify-end"
           onClick={() => setIsOrderPanelOpen(false)}
         >
           <div 
-            className="bg-[#131722] rounded-t-xl max-h-[50vh] overflow-y-auto"
+            className="bg-[#131722] rounded-t-xl max-h-[35vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-2 flex justify-between items-center border-b border-gray-800 sticky top-0 bg-[#131722] z-10">
@@ -192,18 +193,18 @@ export default function DerivTerminal() {
 // Extracted Order Panel for reusability
 function DerivOrderPanel({ tradeMode, setTradeMode, tradeType, setTradeType, selectedDigit, stake, setStake, takeProfit, setTakeProfit, stopLoss, setStopLoss, handleTrade, mode }: any) {
   return (
-    <div className="p-3 md:p-4">
+    <div className="p-2 md:p-4">
       {/* Mode Toggle */}
-      <div className="flex bg-[#0b0e14] p-1 border border-gray-800 rounded mb-3">
+      <div className="flex bg-[#0b0e14] p-0.5 border border-gray-800 rounded mb-2">
         <button 
           onClick={() => setTradeMode('DIGIT')} 
-          className={`flex-1 py-1.5 text-[10px] md:text-xs font-bold rounded transition ${tradeMode === 'DIGIT' ? 'bg-[#f0b90b] text-black' : 'text-gray-500'}`}
+          className={`flex-1 py-1 text-[10px] font-bold rounded ${tradeMode === 'DIGIT' ? 'bg-[#f0b90b] text-black' : 'text-gray-500'}`}
         >
           DIGIT
         </button>
         <button 
           onClick={() => setTradeMode('RISE_FALL')} 
-          className={`flex-1 py-1.5 text-[10px] md:text-xs font-bold rounded transition ${tradeMode === 'RISE_FALL' ? 'bg-[#f0b90b] text-black' : 'text-gray-500'}`}
+          className={`flex-1 py-1 text-[10px] font-bold rounded ${tradeMode === 'RISE_FALL' ? 'bg-[#f0b90b] text-black' : 'text-gray-500'}`}
         >
           RISE/FALL
         </button>
@@ -211,12 +212,12 @@ function DerivOrderPanel({ tradeMode, setTradeMode, tradeType, setTradeType, sel
 
       {/* Digit Tabs */}
       {tradeMode === 'DIGIT' && (
-        <div className="flex bg-[#0b0e14] p-0.5 border border-gray-800 rounded mb-3">
+        <div className="flex bg-[#0b0e14] p-0.5 border border-gray-800 rounded mb-2">
           {['DIGIT_EVEN', 'DIGIT_ODD', 'DIGIT_OVER', 'DIGIT_UNDER'].map(t => (
             <button 
               key={t}
               onClick={() => setTradeType(t as any)} 
-              className={`flex-1 py-1 text-[9px] md:text-[10px] font-bold rounded ${tradeType === t ? 'bg-[#2a2e39] text-white' : 'text-gray-500'}`}
+              className={`flex-1 py-1 text-[8px] font-bold rounded ${tradeType === t ? 'bg-[#2a2e39] text-white' : 'text-gray-500'}`}
             >
               {t.replace('DIGIT_', '')}
             </button>
@@ -225,76 +226,63 @@ function DerivOrderPanel({ tradeMode, setTradeMode, tradeType, setTradeType, sel
       )}
 
       {/* Stake Amount */}
-      <div className="mb-2">
-        <div className="text-[10px] text-gray-400 mb-1 flex justify-between">
-          <span>STAKE AMOUNT</span>
+      <div className="mb-1">
+        <div className="text-[9px] text-gray-400 mb-0.5 flex justify-between">
+          <span>STAKE</span>
           <span className="text-white">USD</span>
         </div>
         <div className="flex items-center bg-[#0b0e14] border border-gray-700 rounded p-1">
-          <span className="text-gray-500 mr-1 text-sm">$</span>
+          <span className="text-gray-500 mr-1 text-xs">$</span>
           <input 
             type="number" value={stake} onChange={(e) => setStake(e.target.value)}
-            className="w-full bg-transparent text-white font-bold text-sm focus:outline-none"
+            className="w-full bg-transparent text-white font-bold text-xs focus:outline-none"
           />
         </div>
       </div>
       
-      <div className="grid grid-cols-3 gap-1 mb-3">
+      <div className="grid grid-cols-3 gap-0.5 mb-2">
         {[1, 5, 10, 20, 50, 100].map(val => (
-          <button key={val} onClick={() => setStake(val.toString())} className={`py-0.5 rounded text-[10px] font-bold ${stake === val.toString() ? 'bg-[#f0b90b] text-black' : 'bg-[#2a2e39] text-gray-400'}`}>
+          <button key={val} onClick={() => setStake(val.toString())} className={`py-0.5 rounded text-[9px] font-bold ${stake === val.toString() ? 'bg-[#f0b90b] text-black' : 'bg-[#2a2e39] text-gray-400'}`}>
             ${val}
           </button>
         ))}
       </div>
 
-      {/* TP / SL - Only for Digit */}
+      {/* TP / SL - compact horizontal */}
       {tradeMode === 'DIGIT' && (
-        <>
-          <div className="text-[10px] text-gray-400 mb-1 flex justify-between">
-            <span>TAKE PROFIT</span>
-            <span className="text-gray-500">Off</span>
-          </div>
-          <div className="flex items-center bg-[#0b0e14] border border-gray-700 rounded p-1 mb-2">
-            <span className="text-green-500 mr-1 text-sm">+</span>
+        <div className="grid grid-cols-2 gap-1 mb-2">
+          <div>
+            <div className="text-[9px] text-gray-400 mb-0.5">TP</div>
             <input 
               type="number" value={takeProfit} onChange={(e) => setTakeProfit(e.target.value)} placeholder="0.00"
-              className="w-full bg-transparent text-white text-xs focus:outline-none"
+              className="w-full bg-[#0b0e14] border border-gray-700 rounded p-1 text-white text-[10px] focus:outline-none"
             />
           </div>
-
-          <div className="text-[10px] text-gray-400 mb-1 flex justify-between">
-            <span>STOP LOSS</span>
-            <span className="text-gray-500">Off</span>
-          </div>
-          <div className="flex items-center bg-[#0b0e14] border border-gray-700 rounded p-1 mb-3">
-            <span className="text-red-500 mr-1 text-sm">-</span>
+          <div>
+            <div className="text-[9px] text-gray-400 mb-0.5">SL</div>
             <input 
               type="number" value={stopLoss} onChange={(e) => setStopLoss(e.target.value)} placeholder="0.00"
-              className="w-full bg-transparent text-white text-xs focus:outline-none"
+              className="w-full bg-[#0b0e14] border border-gray-700 rounded p-1 text-white text-[10px] focus:outline-none"
             />
           </div>
-        </>
+        </div>
       )}
 
       {/* Action Buttons */}
       {tradeMode === 'DIGIT' ? (
-        <button onClick={() => handleTrade()} className="w-full bg-[#f0b90b] hover:bg-yellow-500 text-black py-2 rounded font-bold text-xs transition">
+        <button onClick={() => handleTrade()} className="w-full bg-[#f0b90b] text-black py-1.5 rounded font-bold text-xs">
           PLACE DIGIT TRADE
         </button>
       ) : (
         <div className="flex gap-1">
-          <button onClick={() => handleTrade('RISE')} className="flex-1 bg-[#26a69a] hover:bg-[#2bbbad] text-white py-2 rounded font-bold text-xs transition">
+          <button onClick={() => handleTrade('RISE')} className="flex-1 bg-[#26a69a] text-white py-1.5 rounded font-bold text-xs">
             RISE
           </button>
-          <button onClick={() => handleTrade('FALL')} className="flex-1 bg-[#ef5350] hover:bg-[#f44336] text-white py-2 rounded font-bold text-xs transition">
+          <button onClick={() => handleTrade('FALL')} className="flex-1 bg-[#ef5350] text-white py-1.5 rounded font-bold text-xs">
             FALL
           </button>
         </div>
       )}
-
-      <div className="mt-3 text-center text-[9px] text-gray-500">
-        Mode: {mode}
-      </div>
     </div>
   );
 }
