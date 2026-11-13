@@ -40,13 +40,12 @@ function Header({ onOpenMenu }: { onOpenMenu: () => void }) {
 
   return (
     <header className="h-12 flex-shrink-0 border-b border-gray-800 flex items-center justify-between px-3 md:px-4 bg-[#131722]">
-            {/* Left: Hamburger (mobile) + Logo + Desktop Nav */}
       <div className="flex items-center gap-2 md:gap-6">
         <button onClick={onOpenMenu} className="md:hidden text-gray-400 p-1">
           <Menu size={22} />
         </button>
         
-                <Link href="/dashboard/overview" className="text-base md:text-xl font-bold text-[#f0b90b]">
+        <Link href="/dashboard/overview" className="text-base md:text-xl font-bold text-[#f0b90b]">
           FX<span className="text-white">Platform</span>
         </Link>
         
@@ -58,7 +57,6 @@ function Header({ onOpenMenu }: { onOpenMenu: () => void }) {
         </div>
       </div>
       
-      {/* Right: Balance, Mode Toggle, Icons */}
       <div className="flex items-center gap-2 md:gap-4">
         <div className="bg-[#0b0e14] border border-gray-700 rounded px-2 md:px-3 py-1 flex items-center gap-2">
           <span className="hidden md:inline text-[10px] text-gray-500 font-bold">Balance</span>
@@ -103,22 +101,22 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         
         <div className="flex flex-1 overflow-hidden relative">
           
-          {/* Desktop Sidebar (hidden on mobile) */}
-                          <div className="h-[calc(100%-64px)] overflow-y-auto">
-                  <Sidebar onClose={() => setIsSidebarOpen(false)} />
-                </div>
-
-                 {/* Mobile Sidebar Drawer */}
-        {isSidebarOpen && (
-          <div className="fixed inset-0 z-50 bg-black/70 md:hidden" onClick={() => setIsSidebarOpen(false)}>
-            <div 
-              className="absolute left-0 top-0 bottom-0 w-56 bg-[#131722]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Sidebar onClose={() => setIsSidebarOpen(false)} />
-            </div>
+          {/* Desktop Sidebar - Only visible on md+ screens */}
+          <div className="hidden md:block h-screen">
+            <Sidebar />
           </div>
-        )}
+
+          {/* Mobile Sidebar Drawer - Only shows when isSidebarOpen is true */}
+          {isSidebarOpen && (
+            <div className="fixed inset-0 z-50 bg-black/70 md:hidden" onClick={() => setIsSidebarOpen(false)}>
+              <div 
+                className="absolute left-0 top-0 bottom-0 w-56 bg-[#131722]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Sidebar onClose={() => setIsSidebarOpen(false)} />
+              </div>
+            </div>
+          )}
 
           {/* Main Content */}
           <div className="flex-1 overflow-hidden">
