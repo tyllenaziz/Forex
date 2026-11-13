@@ -5,10 +5,9 @@ import { apiFetch } from '@/lib/api';
 import MarketWatch from './components/MarketWatch';
 import TradingChart from './components/TradingChart';
 import PositionsTable from './components/PositionsTable';
-import Sidebar from './components/Sidebar';
-import { useAccount } from '@/context/AccountContext';
-import { Menu, X, ListFilter } from 'lucide-react'; // Icons for mobile menu
 
+import { useAccount } from '@/context/AccountContext';
+import { X, ListFilter } from 'lucide-react';
 export default function Dashboard() {
   const router = useRouter();
   const { mode } = useAccount();
@@ -89,9 +88,7 @@ export default function Dashboard() {
   return (
     <div className="flex w-full h-screen bg-[#0b0e14] overflow-hidden relative">
       {/* Sidebar - Hidden on Mobile, Visible on Desktop */}
-      <div className="hidden md:block">
-        <Sidebar />
-      </div>
+     
 
       <div className="flex-1 flex overflow-hidden relative">
         
@@ -101,19 +98,25 @@ export default function Dashboard() {
         </div>
 
         {/* Main Chart Area */}
-        <div className="flex-1 flex flex-col border-r border-gray-800 min-w-0 overflow-y-auto h-full pb-20 md:pb-0">
-          
-          {/* Mobile Top Bar */}
+        {/* Main Chart Area */}
+        <div className="flex-1 flex flex-col border-r border-gray-800 min-w-0 overflow-y-auto h-full pb-20 md:pb-0">          
+                    {/* Mobile Top Bar */}
           <div className="h-12 flex-shrink-0 border-b border-gray-800 flex items-center justify-between px-4 bg-[#131722]">
             <button onClick={() => setIsMarketWatchOpen(true)} className="md:hidden text-gray-400 p-1">
               <ListFilter size={20} />
             </button>
             <div className="font-bold text-lg text-white">{selectedSymbol}</div>
-            <button onClick={() => setIsOrderPanelOpen(true)} className="md:hidden text-[#f0b90b] font-bold text-sm">
-              Trade
-            </button>
+            <div className="md:hidden"></div>
           </div>
-          
+                {/* FIXED BOTTOM BAR (Mobile Only) */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#131722] border-t border-gray-800 flex z-40">
+        <button 
+          onClick={() => setIsOrderPanelOpen(true)} 
+          className="flex-1 bg-[#f0b90b] text-black font-bold py-4 text-sm"
+        >
+          Trade {selectedSymbol}
+        </button>
+      </div>
           {/* Chart */}
           <div className="flex-1 min-h-[400px] md:min-h-0 relative">
             <TradingChart symbol={selectedSymbol} />
@@ -161,12 +164,21 @@ export default function Dashboard() {
       )}
 
       {/* MOBILE DRAWER: Order Panel */}
+           {/* MOBILE DRAWER: Order Panel */}
       {isOrderPanelOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 md:hidden flex flex-col justify-end">
-          <div className="bg-[#131722] rounded-t-xl max-h-[85vh] overflow-y-auto pb-4">
+        <div 
+          className="fixed inset-0 z-50 bg-black/70 md:hidden flex flex-col justify-end"
+          onClick={() => setIsOrderPanelOpen(false)}
+        >
+          <div 
+            className="bg-[#131722] rounded-t-xl max-h-[80vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="p-4 flex justify-between items-center border-b border-gray-800 sticky top-0 bg-[#131722] z-10">
               <span className="font-bold text-white">Place Order ({selectedSymbol})</span>
-              <button onClick={() => setIsOrderPanelOpen(false)} className="text-gray-400"><X size={20} /></button>
+              <button onClick={() => setIsOrderPanelOpen(false)} className="text-gray-400">
+                <X size={20} />
+              </button>
             </div>
             <OrderPanel 
               mode={mode}
