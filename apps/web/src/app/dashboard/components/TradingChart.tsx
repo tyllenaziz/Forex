@@ -260,35 +260,40 @@ const ws = new WebSocket('wss://forex-api-dgo5.onrender.com/ws/prices');
       </div>
 
       <div className="flex flex-1 relative">
-        <div className="w-12 bg-[#131722] border-r border-gray-800 flex flex-col items-center py-2 gap-2 z-10 overflow-y-auto">
-           {[
-            { id: 'cursor', icon: MousePointer2 },
-            { id: 'trendline', icon: TrendingUp },
-            { id: 'horizontal', icon: Minus },
-            { id: 'vertical', icon: Plus },
-            { id: 'eraser', icon: Eraser },
-            { id: 'arrow', icon: MoveUpRight },
-            { id: 'pen', icon: PenTool },
-            { id: 'square', icon: Square },
-            { id: 'text', icon: Type },
-            { id: 'measure', icon: Ruler },
-            { id: 'magnet', icon: Magnet },
-            { id: 'zoom', icon: ZoomIn },
-            { id: 'emoji', icon: Smile },
-          ].map(tool => (
-            <button
-              key={tool.id}
-              onClick={() => {
-                if (tool.id === 'eraser') { clearDrawings(); setActiveTool('cursor'); return; }
-                setActiveTool(tool.id);
-                setIsDrawing(false);
-                setDrawPoints([]);
-              }}
-              className={`p-2 rounded hover:bg-[#2a2e39] transition-colors ${activeTool === tool.id ? 'bg-[#2a2e39] text-red-500' : 'text-gray-400'}`}
-            >
-              <tool.icon size={18} />
-            </button>
-          ))}
+                {/* Drawing Toolbar - 2 columns on mobile, 1 column on desktop */}
+        <div className="w-10 md:w-12 bg-[#131722] border-r border-gray-800 flex flex-col items-center py-1 md:py-2 gap-1 md:gap-2 z-10 overflow-y-auto">
+           <div className="grid grid-cols-2 md:grid-cols-1 gap-1 md:gap-2">
+             {[
+              { id: 'cursor', icon: MousePointer2 },
+              { id: 'trendline', icon: TrendingUp },
+              { id: 'horizontal', icon: Minus },
+              { id: 'vertical', icon: Plus },
+              { id: 'eraser', icon: Eraser },
+              { id: 'arrow', icon: MoveUpRight },
+              { id: 'pen', icon: PenTool },
+              { id: 'square', icon: Square },
+              { id: 'text', icon: Type },
+              { id: 'measure', icon: Ruler },
+              { id: 'magnet', icon: Magnet },
+              { id: 'zoom', icon: ZoomIn },
+              { id: 'emoji', icon: Smile },
+            ].map(tool => (
+              <button
+                key={tool.id}
+                onClick={() => {
+                  if (tool.id === 'eraser') { clearDrawings(); setActiveTool('cursor'); return; }
+                  setActiveTool(tool.id);
+                  setIsDrawing(false);
+                  setDrawPoints([]);
+                }}
+                className={`p-1 md:p-2 rounded hover:bg-[#2a2e39] transition-colors ${
+                  activeTool === tool.id ? 'bg-[#2a2e39] text-red-500' : 'text-gray-400'
+                }`}
+              >
+                <tool.icon size={14} className="md:w-5 md:h-5" />
+              </button>
+            ))}
+           </div>
         </div>
 
         <div className="flex-1 relative">
