@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { apiFetch } from '@/lib/api';
 import { useAccount } from '@/context/AccountContext';
-import Sidebar from '../components/Sidebar';
 import { History, CheckCircle, XCircle } from 'lucide-react';
 
 export default function HistoryPage() {
@@ -23,13 +22,9 @@ export default function HistoryPage() {
   }, [router, mode]);
 
   if (loading) return <div className="p-10 text-white">Loading...</div>;
-
   return (
-    <div className="flex w-full h-screen bg-[#0b0e14] overflow-hidden">
-      <Sidebar />
-      
-      <div className="flex-1 p-8 overflow-y-auto">
-        <div className="max-w-6xl mx-auto">
+    <div className="flex-1 p-4 md:p-8 overflow-y-auto h-full">
+      <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-6">
             <div>
               <h1 className="text-2xl font-bold text-white flex items-center gap-2">
@@ -86,8 +81,7 @@ export default function HistoryPage() {
               </table>
             )}
           </div>
-        </div>
-      </div>
+            </div>
     </div>
   );
 }
