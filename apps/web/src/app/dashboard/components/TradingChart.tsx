@@ -58,7 +58,12 @@ export default function TradingChart({ symbol }: { symbol: string }) {
       width: container.clientWidth,
       height: container.clientHeight || 600, // <-- Fallback to 600
 timeScale: { borderColor: '#2B2B43', timeVisible: true, secondsVisible: false, rightOffset: 5, barSpacing: 6, minBarSpacing: 1 },
-      rightPriceScale: { borderColor: '#2B2B43', scaleMargins: { top: 0.1, bottom: 0.25 }, minimumWidth: 120, autoScale: true },
+rightPriceScale: { 
+  borderColor: '#2B2B43', 
+  scaleMargins: { top: 0.1, bottom: 0.25 }, 
+  minimumWidth: 60, 
+  autoScale: true 
+},
       crosshair: {
         mode: CrosshairMode.Normal,
         vertLine: { color: '#758696', width: 1, style: 3, labelBackgroundColor: '#2B2B43' },
@@ -71,13 +76,17 @@ timeScale: { borderColor: '#2B2B43', timeVisible: true, secondsVisible: false, r
     chartRef.current = chart;
 
     const handleResize = () => {
-      if (chartContainerRef.current) {
-        chart.applyOptions({ 
-          width: chartContainerRef.current.clientWidth,
-          height: chartContainerRef.current.clientHeight 
-        });
+  if (chartContainerRef.current) {
+    const isMobile = window.innerWidth < 768;
+    chart.applyOptions({ 
+      width: chartContainerRef.current.clientWidth,
+      height: chartContainerRef.current.clientHeight || 400,
+      rightPriceScale: { 
+        minimumWidth: isMobile ? 55 : 90 
       }
-    };
+    });
+  }
+};
     window.addEventListener('resize', handleResize);
     return () => { window.removeEventListener('resize', handleResize); chart.remove(); };
   }, []);

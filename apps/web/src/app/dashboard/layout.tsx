@@ -112,9 +112,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     {isSidebarOpen && (
             <div className="fixed inset-0 z-50 bg-black/70 md:hidden" onClick={() => setIsSidebarOpen(false)}>
               <div 
-                className="absolute left-0 top-0 bottom-0 w-56 bg-[#131722]"
-                onClick={(e) => e.stopPropagation()}
-              >
+  className="absolute left-0 top-0 bottom-0 w-44 bg-[#131722]"
+  onClick={(e) => e.stopPropagation()}
+>
                 <div className="p-4 flex justify-between items-center border-b border-gray-800">
                   <span className="font-bold text-[#f0b90b]">FXPlatform</span>
                   <button onClick={() => setIsSidebarOpen(false)} className="text-gray-400">

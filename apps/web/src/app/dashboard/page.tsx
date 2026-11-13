@@ -151,8 +151,8 @@ export default function Dashboard() {
            {/* MOBILE DRAWER: Market Watch */}
       {isMarketWatchOpen && (
         <div className="fixed inset-0 z-50 bg-black/70 md:hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-72 bg-[#131722]">
-            <div className="p-4 flex justify-between items-center border-b border-gray-800">
+<div className="absolute left-0 top-0 bottom-0 w-48 bg-[#131722]">
+              <div className="p-4 flex justify-between items-center border-b border-gray-800">
               <span className="font-bold text-white">Market Watch</span>
               <button onClick={() => setIsMarketWatchOpen(false)} className="text-gray-400"><X size={20} /></button>
             </div>
@@ -170,9 +170,9 @@ export default function Dashboard() {
           onClick={() => setIsOrderPanelOpen(false)}
         >
           <div 
-            className="bg-[#131722] rounded-t-xl max-h-[45vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
+  className="bg-[#131722] rounded-t-xl max-h-[30vh] overflow-y-auto"
+  onClick={(e) => e.stopPropagation()}
+>
             <div className="p-2 flex justify-between items-center border-b border-gray-800 sticky top-0 bg-[#131722] z-10">
               <span className="font-bold text-xs text-white">Place Order ({selectedSymbol})</span>
               <button onClick={() => setIsOrderPanelOpen(false)} className="text-gray-400">
