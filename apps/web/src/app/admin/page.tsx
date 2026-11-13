@@ -13,7 +13,7 @@ export default function AdminLogin() {
     e.preventDefault();
     setError('');
     try {
-      const res = await fetch('http://forex-api-dgo5.onrender.com/api/auth/login', {
+      const res = await fetch('https://forex-api-dgo5.onrender.com/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

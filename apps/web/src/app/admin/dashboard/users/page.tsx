@@ -12,7 +12,7 @@ export default function AdminUsersPage() {
     const token = localStorage.getItem('adminToken');
     if (!token) return router.push('/admin');
 
-    fetch('http://forex-api-dgo5.onrender.com/api/admin/users', {
+    fetch('https://forex-api-dgo5.onrender.com/api/admin/users', {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => res.ok ? res.json() : Promise.reject())
@@ -30,7 +30,7 @@ export default function AdminUsersPage() {
     const token = localStorage.getItem('adminToken');
     
     try {
-      const res = await fetch(`http://forex-api-dgo5.onrender.com/api/admin/users/${userId}/role`, {
+      const res = await fetch(`https://forex-api-dgo5.onrender.com/api/admin/users/${userId}/role`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,
